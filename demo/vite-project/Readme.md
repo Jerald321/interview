@@ -1,9 +1,7 @@
 📘 Employee Directory React App:
 A simple, functional employee directory built with React that allows users to add, edit, delete, search, and filter employees by various criteria like department, role, and name.
 
-Live Demo
 
-https://illustrious-malasada-c2fb73.netlify.app/ 
 
 
 🛠 Setup & Run Instructions
