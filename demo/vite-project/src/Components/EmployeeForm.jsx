@@ -1,7 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import '../Style/EmployeeForm.css'; // 👈 Import CSS file
 
-export default function EmployeeForm({ initialData, onSubmit, onClose }) {
+
+
+
+
+
+
+
+
+import React, { useState, useEffect } from 'react';
+import '../Style/EmployeeForm.css';
+
+ function EmployeeForm({ initialData, onSubmit, onClose }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,12 +28,25 @@ export default function EmployeeForm({ initialData, onSubmit, onClose }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = () => {
-    if (formData.name && formData.email && formData.department && formData.role) {
-      onSubmit(formData);
-    } else {
+    const { name, email, department, role } = formData;
+
+    if (!name || !email || !department || !role) {
       alert("Please fill all fields.");
+      return;
     }
+
+    if (!validateEmail(email)) {
+      alert("Invalid email format.");
+      return;
+    }
+
+    onSubmit(formData);
   };
 
   return (
@@ -44,8 +66,7 @@ export default function EmployeeForm({ initialData, onSubmit, onClose }) {
           placeholder="Email"
         />
         <input
-          name="department" 
-          
+          name="department"
           value={formData.department}
           onChange={handleChange}
           placeholder="Department"
@@ -68,3 +89,6 @@ export default function EmployeeForm({ initialData, onSubmit, onClose }) {
     </div>
   );
 }
+
+export default  EmployeeForm;
+
