@@ -28,11 +28,10 @@ import '../Style/EmployeeForm.css';
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
+const validateEmail = (email) => {
+  const strictEmailRegex = /^[a-zA-Z0-9](\.?[a-zA-Z0-9_-]+)*@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+  return strictEmailRegex.test(email);
+};
   const handleSubmit = () => {
     const { name, email, department, role } = formData;
 
